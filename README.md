@@ -35,6 +35,24 @@ react-native run-ios
 react-native run-android
 ```
 
+报错处理
+1、Unable to resolve module `react-native/Libraries/EventEmitter/EventEmitter`
+解决方法：
+找到react-native-root-siblings/lib/AppRegistryInjection.js
+import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
+
+修改为：
+
+import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
+2、undefined is not an object (evaluating '_reactNative.ViewPropTypes.style')
+解决方法：
+class ToastContainer extends Component {
+    static displayName = 'ToastContainer';
+
+    static propTypes = {
+        ...ViewPropTypes,
+        containerStyle: ViewPropTypes 改为PropTypes.style,
+
 iOS 还需要把ART和Notification在xcode中配置.
 
 
